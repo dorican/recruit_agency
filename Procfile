@@ -1,0 +1,1 @@
+web: gunicorm rec_agency.wsgi --log-file -

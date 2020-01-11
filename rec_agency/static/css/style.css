@@ -1,0 +1,44 @@
+.text_center {
+    text-align: center;
+}
+.success {
+    padding: 25px 10px;
+    background-color: #d4edda;
+}
+.error {
+    padding: 25px 10px;
+    background-color: #f8d7da;
+}
+
+.margin_top_25 {
+    margin-top: 25px;
+}
+
+.margin_bottom_25 {
+    margin-bottom: 25px;
+}
+
+.search_card {
+    margin: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #f8f9fa;
+}
+
+.block {
+    display: block;
+}
+.ul_list_pad_left_0 {
+    padding-left: 0px;
+}
+.li_type_none {
+    list-style-type: none
+}
+
+.width_100 {
+    width: 100%;
+}
+
+.errorlist {
+    color: red;
+}
