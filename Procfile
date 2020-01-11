@@ -1,1 +1,1 @@
-web: gunicorm rec_agency.wsgi --log-file -
+web: gunicorn rec_agency.wsgi --log-file -
