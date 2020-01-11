@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
@@ -80,11 +81,20 @@ def question_detail(request, pk):
 			'question': question,
 		}
 		return render(request, 'mainapp/question_detail.html', context)
-	if request.method == 'POST':
-		user = Recruit.objects.all().order_by('-id')[0]
-		choice_obj = Choice.objects.get(id=request.POST.get('choice'))
-		Answer.objects.create(recruit=user, choice=choice_obj)
-		return HttpResponseRedirect(reverse('mainapp:recruit_questions'))
+	try:
+		if request.method == 'POST':
+			user = Recruit.objects.all().order_by('-id')[0]
+			choice_obj = Choice.objects.get(id=request.POST.get('choice'))
+			Answer.objects.create(recruit=user, choice=choice_obj)
+			return HttpResponseRedirect(reverse('mainapp:recruit_questions'))
+	except ObjectDoesNotExist:
+		messages.error(request, 'Вы не выбрали вариант ответа!')
+		question = Question.objects.get(id=pk)
+		context = {
+			'page_title': 'Список вопросов',
+			'question': question,
+		}
+		return render(request, 'mainapp/question_detail.html', context)
 
 
 def add_recruit(request, pk, sitkh):
