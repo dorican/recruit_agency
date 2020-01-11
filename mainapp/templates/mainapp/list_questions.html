@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Список вопросов для вступления в Орден Ситхов</h5>
+    {% if questions %}
+        <ul class="ul_list_pad_left_0">
+        {% for item in questions %}
+            <li class="li_type_none">
+                <a href="{% url 'mainapp:question_detail' item.pk %}">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Вы молодец! Ответили на все вопросы. Теперь ожидайте приглашения</p>
+    {% endif %}
+{% endblock %}

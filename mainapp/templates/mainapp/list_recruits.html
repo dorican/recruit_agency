@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Список
+        падаванов</h5>
+    {% if recruits %}
+        {% for item in recruits %}
+            <a href="{% url 'main:recruit_answers' item.pk sitkh %}">
+                <p>{{ item }}</p>
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>На данный момент юных падаванов нет. Зайдите позже.</p>
+    {% endif %}
+{% endblock %}

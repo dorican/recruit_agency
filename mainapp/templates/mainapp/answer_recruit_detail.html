@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Данные падавана</h5>
+    <h6>Имя</h6>
+    <p>{{ recruit.name }}</p>
+    {% if questions %}
+        <div class="row">
+            <div class="col-sm">
+                <h6>Вопрос</h6>
+                {% for item in questions %}
+                    <p>{{ item }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-sm">
+                <h6>Ответ</h6>
+                {% for item in recruit.answers %}
+                    <p>{{ item.choice }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>Рекрут не ответил ни на один вопрос.</p>
+    {% endif %}
+    <a href="{% url 'main:recruits_for_sitkh' recruit.pk sitkh.id %}"
+       class="btn btn-secondary margin_bottom_25">Назад</a>
+    <form action="{% url 'main:add_recruit' recruit.pk sitkh.id %}"
+          method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success"
+               value="Сделать рукой Тени">
+    </form>
+{% endblock %}

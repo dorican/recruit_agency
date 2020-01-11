@@ -1,0 +1,46 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Список всех ситхов
+        Ордена</h5>
+    {% if all_sitkhs %}
+        <div class="row">
+                <div class="col-sm">
+                    <h6>Ситх</h6>
+                </div>
+                <div class="col-sm">
+                    <h6>Количество рук</h6>
+                </div>
+            </div>
+        {% for item in all_sitkhs %}
+            <div class="row">
+                <div class="col-sm">
+                    <p>{{ forloop.counter }}. {{ item }}</p>
+                </div>
+                <div class="col-sm">
+                    <p>{{ item.number_pupils }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>На данный момент нет ни одного ситха в Ордене.</p>
+    {% endif %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Список ситхов в Ордене с количеством рук более одного</h5>
+    {% if sitkhs_more_hands %}
+        {% for item in sitkhs_more_hands %}
+            <div class="row">
+                <div class="col-sm">
+                    <h6>Ситх</h6>
+                    <p>{{ item }}</p>
+                </div>
+                <div class="col-sm">
+                    <h6>Количетво рук</h6>
+                    <p>{{ item.number_pupils }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>На данный момент нет ни одного ситха в Ордене с количеством рук более одного.</p>
+    {% endif %}
+{% endblock %}

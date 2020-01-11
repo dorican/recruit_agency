@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="margin_top_25 margin_bottom_25">{{ question.title }}</h5>
+    <form method="post"
+          action="{% url 'mainapp:question_detail' question.pk %}">
+        {% csrf_token %}
+        <ul class="ul_list_pad_left_0">
+            {% for item in question.choices %}
+                <li class="li_type_none">
+                    <input type="radio" name="choice" value="{{ item.pk }}">
+                    <label>{{ item.text }}</label>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'main:recruit_questions' %}" class="btn btn-secondary">Назад</a>
+        <input type="submit" class="btn btn-success" value="Ответить">
+    </form>
+
+{% endblock %}

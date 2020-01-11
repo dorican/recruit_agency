@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25">Введи свои данные юный падаван</h5>
+    <form action="{% url 'main:recruit_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'main:index' %}" class="btn btn-secondary">Назад</a>
+        <input type="submit" class="btn btn-success" value="Далее">
+    </form>
+{% endblock %}

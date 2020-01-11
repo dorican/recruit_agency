@@ -1,0 +1,19 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25">Выбери себя великий ситх</h5>
+    <form action="{% url 'main:choice_sitkh' %}" method="post">
+        {% csrf_token %}
+        <select class="margin_bottom_25 block width_100 form-control" name="sitkh">
+            <option selected>-------</option>
+            {% for item in sitkhs %}
+                <option name="sitkh_opt" value="{{ item.pk }}">
+                    {{ item }}
+                </option>
+            {% endfor %}
+        </select>
+        <a href="{% url 'main:index' %}" class="btn btn-secondary">Назад</a>
+        <input type="submit" class="btn btn-success" value="Далее">
+    </form>
+{% endblock %}

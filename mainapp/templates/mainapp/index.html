@@ -1,0 +1,20 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5 class="text_center margin_top_25 margin_bottom_25">Добро пожаловать в
+        рекрутинговое агентство Ордена Ситхов</h5>
+    <div class="row">
+        <div class="col-sm">
+            <a href="{% url 'main:recruit_create' %}">
+                <p class="text_center search_card">Рекрут?</p>
+            </a>
+        </div>
+
+        <div class="col-sm">
+            <a href="{% url 'main:choice_sitkh' %}">
+                <p class="text_center search_card">Ситх?</p>
+            </a>
+        </div>
+    </div>
+{% endblock %}
