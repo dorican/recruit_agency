@@ -6,7 +6,6 @@
     <form action="{% url 'main:choice_sitkh' %}" method="post">
         {% csrf_token %}
         <select class="margin_bottom_25 block width_100 form-control" name="sitkh">
-            <option selected>-------</option>
             {% for item in sitkhs %}
                 <option name="sitkh_opt" value="{{ item.pk }}">
                     {{ item }}
