@@ -129,9 +129,10 @@ STATICFILES_DIRS = (
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = '25'
-EMAIL_HOST_USER = 'order@sitkhs.local'
-EMAIL_HOST_PASSWORD = 'sitkh'
-EMAIL_USE_SSL = False
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'doricantest@yandex.ru'
+EMAIL_HOST_PASSWORD = 'Ghbkbxysqgfhjkm'
+EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
